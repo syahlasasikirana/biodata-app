@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BiodataList from './pages/BiodataList';
+import BiodataForm from './pages/BiodataForm';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends React.Component{
+  render(){
+    return(
+      <Router>
+        <Routes>
+          <Route path="/" element={<BiodataList />} />
+          <Route path="/create-biodata" element={<BiodataForm />} />
+          <Route path="/edit-biodata/:id" element={<BiodataForm />} />
+        </Routes>
+      </Router>
+    )
+  }
 }
 
 export default App;
